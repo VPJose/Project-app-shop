@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','Ingresa')
+
 @section('body-class','login-page sidebar-collapse')
 
 @section('content')
