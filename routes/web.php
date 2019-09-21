@@ -20,3 +20,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/products', 'ProductController@index'); // Listado
 Route::get('/admin/products/create', 'ProductController@create'); // Formulario
 Route::post('/admin/products', 'ProductController@store'); // Registra
+Route::get('/admin/products/{id}/edit', 'ProductController@edit'); // formulario de Editar
+Route::post('/admin/products/{id}/edit', 'ProductController@update'); // Editar
+Route::delete('/admin/products/{id}/delete', 'ProductController@destroy'); // formulario para Eliminar

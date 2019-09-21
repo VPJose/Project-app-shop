@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
 
             // Forgei Key o Llave Foranea
             $table->integer('category_id')->unsigned()->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }

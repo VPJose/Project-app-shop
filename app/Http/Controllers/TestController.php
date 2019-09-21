@@ -11,4 +11,5 @@ class TestController extends Controller
       $products = Product::all();
       return view('welcome')->with(compact('products'));
     }
+    
 }

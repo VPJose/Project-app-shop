@@ -19,8 +19,8 @@ class CreateProductImagesTable extends Migration
             $table->boolean('featured')->default(false);
 
             // Forgei Key o Llave Foranea
-            $table->integer('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->integer('product_id')->unsigned()->index();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete("cascade")->onUpdate("cascade");
 
             $table->timestamps();
         });
