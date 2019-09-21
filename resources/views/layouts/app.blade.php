@@ -36,8 +36,12 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           @guest
-              <li class="nav-item"><a  class="nav-link" rel="tooltip" title="" data-placement="bottom" href="{{ route('login') }}" data-original-title="ingresa">Iniciar Sesíon</a></li>
-              <li class="nav-item"><a  class="nav-link" rel="tooltip" title="" data-placement="bottom" href="{{ route('register') }}" data-original-title="Registrate">Registro</a></li>
+              <li class="nav-item">
+                <a  class="nav-link" rel="tooltip" title="" data-placement="bottom" href="{{ route('login') }}" data-original-title="ingresa">Iniciar Sesíon</a>
+              </li>
+              <li class="nav-item">
+                <a  class="nav-link" rel="tooltip" title="" data-placement="bottom" href="{{ route('register') }}" data-original-title="Registrate">Registro</a>
+              </li>
           @else
               <li class="dropdown nav-item">
                   <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
@@ -45,16 +49,20 @@
                   </a>
 
                   <ul class="dropdown-menu">
+                    @if (auth()->user()->admin)
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('logout') }}"
+                        <a class="nav-link" href="{{ url('/admin/products') }}">Gestionar Productos</a>
+                      </li>
+                    @endif
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
                               Logout
-                          </a>
-
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                              {{ csrf_field() }}
-                          </form>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                        </form>
                       </li>
                   </ul>
               </li>

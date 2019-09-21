@@ -15,6 +15,10 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if (!auth()->user()->admin) {
+          return redirect('/login');
+        }
+
         return $next($request);
     }
 }

@@ -17,9 +17,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/products', 'ProductController@index'); // Listado
-Route::get('/admin/products/create', 'ProductController@create'); // Formulario
-Route::post('/admin/products', 'ProductController@store'); // Registra
-Route::get('/admin/products/{id}/edit', 'ProductController@edit'); // formulario de Editar
-Route::post('/admin/products/{id}/edit', 'ProductController@update'); // Editar
-Route::delete('/admin/products/{id}/delete', 'ProductController@destroy'); // formulario para Eliminar
+// Administrador
+Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+  Route::get('/products', 'ProductController@index'); // Listado
+  Route::get('/products/create', 'ProductController@create'); // Formulario
+  Route::post('/products', 'ProductController@store'); // Registra
+  Route::get('/products/{id}/edit', 'ProductController@edit'); // formulario de Editar
+  Route::post('/products/{id}/edit', 'ProductController@update'); // Editar
+  Route::delete('/products/{id}/delete', 'ProductController@destroy'); // formulario para Eliminar
+});
