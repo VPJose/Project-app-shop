@@ -19,6 +19,7 @@
     <link href="{{ asset('css/material-kit.css?v=2.0.6') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
+    @yield('styles')
 </head>
 <body class="@yield('body-class')">
   <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
@@ -49,6 +50,9 @@
                   </a>
 
                   <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a href="{{ url('/home') }}" class="nav-link">Dashboar</a>
+                    </li>
                     @if (auth()->user()->admin)
                       <li class="nav-item">
                         <a class="nav-link" href="{{ url('/admin/products') }}">Gestionar Productos</a>

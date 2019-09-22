@@ -16,9 +16,15 @@ Route::get('/', 'TestController@welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products/{id}', 'ProductController@show'); //
+
+Route::post('/cart', 'cartDetailController@store'); // guardar
+Route::delete('/cart', 'cartDetailController@destroy'); // eliminar
+
+Route::post('/order', 'cartController@update'); //actualizar elñ carrito de Compras
 
 // Administrador
-Route::middleware(['auth','admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth','admin'])->prefix('admin')->namespace('Admin')->group(function () {
   Route::get('/products', 'ProductController@index'); // Listado
   Route::get('/products/create', 'ProductController@create'); // Formulario
   Route::post('/products', 'ProductController@store'); // Registra
