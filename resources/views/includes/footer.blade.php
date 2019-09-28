@@ -3,22 +3,22 @@
     <nav class="float-left">
       <ul>
         <li>
-          <a href="https://www.creative-tim.com">
+          <a href="#">
             ¿Necesitas Ayuda?
           </a>
         </li>
         <li>
-          <a href="https://creative-tim.com/presentation">
+          <a href="#">
             Asesoría persoanlizada
           </a>
         </li>
         <li>
-          <a href="http://blog.creative-tim.com">
+          <a href="#">
             Blog
           </a>
         </li>
         <li>
-          <a href="https://www.creative-tim.com/license">
+          <a href="#">
             Tutorial de Compra
           </a>
         </li>
@@ -28,8 +28,8 @@
       &copy;
       <script>
         document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
-      <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+      </script>, realizado <i class="material-icons">favorite</i> por
+      <a href="#" target="_blank">Jose Gregorio Vasquez Pineda</a>
     </div>
   </div>
 </footer>

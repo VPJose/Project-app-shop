@@ -49,7 +49,11 @@
             @foreach (auth()->user()->cart->details as $detail)
               <tr class="row">
                 <td class="text-cente col-2">
-                  <img src="{{ $detail->product->featured_image_url }}" alt="Image" width="75" height="75">
+                  @if ($detail->product->images->featured === 1)
+                    <img src="{{ $detail->product->featured_image_url }}" alt="Image" width="75" height="75">
+                  @else
+                    <img src="{{ $detail->product->featured_image_url }}" alt="Image" width="75" height="75">
+                  @endif
                 </td>
                 <td class="col-2">
                   <a href="{{ url('/products/'.$detail->product->id.'') }}" target="_blank">{{ $detail->product->name }}</a>

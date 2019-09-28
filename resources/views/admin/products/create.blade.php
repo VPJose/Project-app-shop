@@ -44,13 +44,24 @@
                    <span class="bmd-help">We'll never share your email with anyone else.</span>
                  </div>
                 </div>
-              <div class="col-md-12">
-                 <div class="form-group bmd-form-group">
-                   <label for="exampleInput3" class="bmd-label-floating">Description Corta</label>
-                   <input type="text" id="exampleInput3" name="description" class="form-control">
-                   <span class="bmd-help">We'll never share your email with anyone else.</span>
-                 </div>
+              <div class="col-md-6">
+                <div class="form-group bmd-form-group">
+                  <label for="exampleInput3" class="bmd-label-floating">Description Corta</label>
+                  <input type="text" id="exampleInput3" name="description" class="form-control">
+                  <span class="bmd-help">We'll never share your email with anyone else.</span>
                 </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group label-floating">
+                   <label class="control-label">Categoria</label>
+                   <select class="form-control" name="category_id">
+                     <option value="0">General</option>
+                     @foreach ($categories as $category)
+                       <option value="{{ $category->id }}">{{ $category->name }}</option>
+                     @endforeach
+                   </select>
+                </div>
+              </div>
               <div class="col-12 my-3">
                 <div class="input-group">
                   <textarea name="long_description" class="form-control" placeholder="Description Detallada del producto" rows="2"></textarea>
@@ -60,6 +71,7 @@
           </div>
           <div class="footer text-center">
             <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{{ url('/admin/products') }}" class="btn btn-danger mx-2">Cancelar</a>
           </div>
         </form>
       </div>

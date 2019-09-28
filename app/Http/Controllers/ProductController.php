@@ -10,6 +10,8 @@ class ProductController extends Controller
     public function show($id)
     {
       $product = Product::find($id);
-      return view('products.show')->with(compact('product'));
+      // Ordenar las imagenes por featured o destacada
+      $images = $product->images()->orderBy('featured', 'desc')->get();
+      return view('products.show')->with(compact('product','images'));
     }
 }

@@ -22,7 +22,7 @@
 @endsection
 
 @section('content')
-  <div class="page-header header-filter" data-parallax="true" style="background-image: url('../assets/img/city-profile.jpg');"></div>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url('{{ asset('/img/city-profile.jpg') }}');"></div>
   <div class="main main-raised">
     <div class="profile-content">
       <div class="container">
@@ -30,7 +30,7 @@
           <div class="col-md-12 ml-auto mr-auto">
             <div class="profile">
               <div class="avatar">
-                <img src="{{ $product->featured_image_url }}" class="rounded">
+                <img src="{{ $product->featured_image_url }}" class="rounded img-rounded">
               </div>
               @if (session('notification'))
                 @if (session('alert'))
@@ -59,7 +59,7 @@
           </div>
           <div class="row my-5 ml-auto mr-auto">
             @foreach ($images as $image)
-              <div class="col-md-4">
+              <div class="col-md-4 my-4">
                 <img src="{{ $image->url }}" alt="" class="img-rounded" width="250" height="350">
               </div>
             @endforeach
@@ -84,7 +84,7 @@
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <input type="number" name="quantity" value="1" class="form-control">
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer pt-2">
             <button type="button" class="btn btn-danger btn-link mx-2" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-info btn-link mx-2">Añadir al Carrito</button>
           </div>

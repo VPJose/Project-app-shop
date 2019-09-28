@@ -35,12 +35,23 @@
                    <span class="bmd-help">We'll never share your email with anyone else.</span>
                  </div>
                 </div>
-              <div class="col-md-12">
-                 <div class="form-group bmd-form-group">
-                   <label for="exampleInput3" class="bmd-label-floating">Description Corta</label>
-                   <input type="text" id="exampleInput3" name="description" class="form-control" value="{{ $product->description }}">
-                   <span class="bmd-help">We'll never share your email with anyone else.</span>
-                 </div>
+                <div class="col-md-6">
+                  <div class="form-group bmd-form-group">
+                    <label for="exampleInput3" class="bmd-label-floating">Description Corta</label>
+                    <input type="text" id="exampleInput3" name="description" class="form-control" value="{{ $product->description }}">
+                    <span class="bmd-help">We'll never share your email with anyone else.</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group label-floating">
+                     <label class="control-label">Categoria</label>
+                     <select class="form-control" name="category_id">
+                       <option value="0">General</option>
+                       @foreach ($categories as $category)
+                         <option value="{{ $category->id }}" @if ($category->id == old('category_id', $product->category_id)) selected @endif>{{ $category->name }}</option>
+                       @endforeach
+                     </select>
+                  </div>
                 </div>
               <div class="col-12 my-3">
                 <div class="input-group">

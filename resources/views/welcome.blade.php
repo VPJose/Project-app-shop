@@ -20,6 +20,44 @@
     display: flex;
     flex-direction: column;
   }
+  .tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+  .tt-hint {
+    color: #999
+  }
+
+  .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+  width: 222px;
+  margin-top: 4px;
+  padding: 4px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+  .tt-suggestion {
+    padding: 3px 20px;
+    line-height: 24px;
+  }
+
+  .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+    color: #fff;
+    background-color: #0097cf;
+  }
+
+  .tt-suggestion p {
+    margin: 0;
+  }
 </style>
 @endsection
 
@@ -31,7 +69,7 @@
           <h1 class="title">Bienvenido a App Shop.</h1>
           <h4>realiza tus pedidos en lina y te contactaremos a coordenar la entrega</h4>
           <br>
-          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="btn btn-danger btn-raised btn-lg">
+          <a href="#" target="_blank" class="btn btn-danger btn-raised btn-lg">
             <i class="fa fa-play"></i> ¿Como Funciona?
           </a>
         </div>
@@ -80,31 +118,35 @@
         </div>
       </div>
       <div class="section text-center">
-        <h2 class="title">Productos Disponibles</h2>
+        <h2 class="title">Visita Nuestras Categorias</h2>
+        <form class="form-inline" action="{{ url('/search') }}" method="get">
+          <div class="row mx-auto text-center">
+            <div id="search " class="input-gorup p-2">
+              <input class="typeahead form-control" type="text" name="query" placeholder="Busqueda">
+            </div>
+            <button type="submit" class="btn btn-primary btn-fab btn-fab-mini">
+              <i class="material-icons">search</i>
+            </button>
+          </div>
+        </form>
         <div class="team">
           <div class="row">
-            @foreach ($products as $product)
+            @foreach ($categories as $category)
               <div class="col-md-4">
                 <div class="team-player">
                   <div class="card card-plain">
                     <div class="col-md-6 ml-auto mr-auto">
-                      <img src="{{ $product->featured_image_url }}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid" width="250" height="250">
+                      <img src="{{ $category->featured_image_url }}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid" width="250" height="250">
                     </div>
                     <h4 class="card-title">
-                      <a href="{{ url('/products/'.$product->id.'') }}">{{ $product->name }}</a>
-                      <br>
-                        <small class="card-description text-muted">{{$product->category->name}}</small>
-                    </h4>
+                      <a href="{{ url('/categories/'.$category->id.'') }}">{{ $category->name }}</a>
                     <div class="card-body">
-                      <p class="card-description">{{ $product->description }}</p>
+                      <p class="card-description">{{ $category->description }}</p>
                     </div>
                   </div>
                 </div>
               </div>
             @endforeach
-          </div>
-          <div class="text-center">
-            {{ $products->links('pagination::bootstrap-4') }}
           </div>
         </div>
       </div>
